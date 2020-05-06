@@ -16,3 +16,6 @@
 
 2020.05.04
  1. first integration
+
+2020.05.07
+ 1. Add user DB by use firebase and storing user score in the DB
