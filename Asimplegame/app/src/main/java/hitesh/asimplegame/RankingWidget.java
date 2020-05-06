@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import static hitesh.asimplegame.ResultActivity.getScore;
+import static hitesh.asimplegame.ResultActivity.getfirstScore;
 
 /**
  * Implementation of App Widget functionality.
@@ -16,7 +16,6 @@ import static hitesh.asimplegame.ResultActivity.getScore;
 public class RankingWidget extends AppWidgetProvider{
 
     private final static String ACTION_BTN = "ButtonClick";
-    private final static String ACTION_GAME_FINISH = "GameFinish";
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
@@ -30,7 +29,7 @@ public class RankingWidget extends AppWidgetProvider{
 
         appWidgetManager.updateAppWidget(appWidgetId,views);
 
-        views.setTextViewText(R.id.appwidget_text, "Ranking 1th Score\n"+getScore());
+        views.setTextViewText(R.id.appwidget_text, "Ranking 1th Score\n"+ getfirstScore());
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -66,7 +65,7 @@ public class RankingWidget extends AppWidgetProvider{
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.ranking_widget);
             ComponentName componentName = new ComponentName(context, RankingWidget.class);
 
-            views.setTextViewText(R.id.appwidget_text, "Ranking 1th Score\n"+getScore());
+            views.setTextViewText(R.id.appwidget_text, "Ranking 1th Score\n"+ getfirstScore());
             appWidgetManager.updateAppWidget(componentName, views);
         }
     }

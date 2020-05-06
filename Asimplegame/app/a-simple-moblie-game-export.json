@@ -1,0 +1,16 @@
+{
+  "user" : {
+    "user1" : {
+      "easyScore" : 0,
+      "email" : "ipkjw2@naver.com",
+      "hardScore" : 0,
+      "mediumScore" : 0
+    },
+    "user2" : {
+      "easyScore" : 0,
+      "email" : "1439433776@qq.com",
+      "hardScore" : 0,
+      "mediumScore" : 0
+    }
+  }
+}

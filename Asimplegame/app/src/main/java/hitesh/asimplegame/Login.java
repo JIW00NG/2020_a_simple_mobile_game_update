@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
         buttonLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!editTextEmail.getText().toString().equals("") && !editTextPassword.getText().toString().equals("")) {
+                if (!("").equals(editTextEmail.getText().toString()) && !editTextPassword.getText().toString().equals("")) {
                     loginUser(editTextEmail.getText().toString(), editTextPassword.getText().toString());
                 } else {
                     Toast.makeText(Login.this, "Enter the ID and Password.", Toast.LENGTH_LONG).show();

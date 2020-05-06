@@ -1,7 +1,9 @@
 package hitesh.asimplegame;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+
 import android.os.Bundle;
 
 import android.view.View;
@@ -14,8 +16,12 @@ public class ResultActivity extends Activity {
 	private static int score;
 	private static int firstScore;
 
+	int easyScore,mediumScore,hardScore;
+
+	@SuppressLint("SetTextI18n")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result);
 
@@ -27,6 +33,9 @@ public class ResultActivity extends Activity {
 		score = b.getInt("score");
         textResult.setText("Your score is " + " " + score + ". Thanks for playing my game.");
 
+        User user = new User();
+        user.getBestScore("easy");
+
 	}
 
 	public void playagain(View o) {
@@ -37,6 +46,7 @@ public class ResultActivity extends Activity {
 		stopService(bgmIntent);
 		Intent intent = new Intent(this, QuestionActivity.class);
 		startActivity(intent);
+		finish();
 	}
 
 	public void exitToTitle(View view){
@@ -44,9 +54,10 @@ public class ResultActivity extends Activity {
 		stopService(bgmIntent);
 		Intent intent = new Intent(this,StartActivity.class);
 		startActivity(intent);
+		finish();
 	}
 
-	public static int getScore(){
+	public static int getfirstScore(){
 		if(score>firstScore){
 			firstScore=score;
 			return firstScore;

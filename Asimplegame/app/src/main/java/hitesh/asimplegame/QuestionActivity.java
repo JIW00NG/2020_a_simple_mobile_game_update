@@ -52,7 +52,7 @@ public class QuestionActivity extends Activity {
         questionList = db.getAllQuestions();  // this will fetch all quetonall questions
         currentQ = questionList.get(questionID); // the current question
 
-        startService(new Intent(QuestionActivity.this,MyService2.class));
+//        startService(new Intent(QuestionActivity.this,MyService2.class));
 
         txtQuestion = (TextView) findViewById(R.id.txtQuestion);
         // the textview in which the question will be displayed
@@ -221,8 +221,6 @@ public class QuestionActivity extends Activity {
                             - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS
                             .toMinutes(millis)));
 
-            Log.d(TAG, "current time: " + hms);
-            times.setText(hms);
             Log.d(TAG, "current time: " + hms);
             times.setText(hms);
             if ((int)TimeUnit.MILLISECONDS.toSeconds(millis) <= 10) {

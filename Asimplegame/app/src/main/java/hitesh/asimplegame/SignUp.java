@@ -47,14 +47,17 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
-    private void createUser(String email, String password, String name) {
+    private void createUser(final String email, String password, String name) {
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // 회원가입 성공시
-                            Toast.makeText(SignUp.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(SignUp.this, "회원가입 성공 ", Toast.LENGTH_SHORT).show();
+                            User user = new User();
+                            user.userRegist(email);
                             finish();
                         } else {
                             // 계정이 중복된 경우
