@@ -1,6 +1,5 @@
 package hitesh.asimplegame;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 
@@ -18,7 +17,6 @@ public class ResultActivity extends Activity {
 
 	int easyScore,mediumScore,hardScore;
 
-	@SuppressLint("SetTextI18n")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
