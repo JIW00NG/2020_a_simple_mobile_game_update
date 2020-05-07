@@ -3,6 +3,8 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="appwidget_text">Ranking 1th Score\n50</string>
+    <string name="appwidget_easy_first_score">Easy 1th Score : 50</string>
+    <string name="appwidget_normal_first_score">Normal 1th Score : 50</string>
+    <string name="appwidget_hard_first_score">Hard 1th Score : 50</string>
     <string name="add_widget">Add widget</string>
 </resources>

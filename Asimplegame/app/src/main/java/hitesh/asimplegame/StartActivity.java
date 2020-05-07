@@ -39,6 +39,8 @@ public class StartActivity extends Activity {
         but2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(StartActivity.this, RankingActivity.class);
+                startActivity(intent);
                 finish();
             }
         });

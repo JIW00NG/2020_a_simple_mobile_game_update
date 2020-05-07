@@ -14,10 +14,8 @@ import static hitesh.asimplegame.QuizDBOpenHelper.setDatabaseRandoming;
 
 public class ResultActivity extends Activity {
 
-	private static int score;
-	private static int firstScore;
-
-	int easyScore,mediumScore,hardScore;
+	private static int firstEasyScore, firstNormalScore, firstHardScore;
+	private static int easyScore,normalScore,hardScore;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +29,21 @@ public class ResultActivity extends Activity {
 
 		TextView textResult = (TextView) findViewById(R.id.textResult);
 		Bundle b = getIntent().getExtras();
-		score = b.getInt("score");
-		String currentLevel = getLevel();
-        textResult.setText(currentLevel+" "+"Your score is " + " " + score + ". Thanks for playing my game.");
-
         User user = new User();
-        user.getBestScore(currentLevel);
+		if(getLevel()=="easy"){
+			easyScore = b.getInt("score");
+        	textResult.setText("Your Easy level score is " + " " + easyScore + ". Thanks for playing my game.");
+        	user.setBestScore("easy");
+		}else if(getLevel()=="normal"){
+			normalScore=b.getInt("score");
+        	textResult.setText("Your normal level score is " + " " + normalScore + ". Thanks for playing my game.");
+        	user.setBestScore("normal");
+		}else if(getLevel()=="hard"){
+			hardScore=b.getInt("score");
+        	textResult.setText("Your hard level score is " + " " + hardScore + ". Thanks for playing my game.");
+        	user.setBestScore("hard");
+		}
+
 
 	}
 
@@ -59,12 +66,28 @@ public class ResultActivity extends Activity {
 		finish();
 	}
 
-	public static int getfirstScore(){
-		if(score>firstScore){
-			firstScore=score;
-			return firstScore;
+	public static int getfirstScore(String level){
+		if(level=="easy"){
+			if(easyScore>firstEasyScore){
+				firstEasyScore=easyScore;
+				return firstEasyScore;
+			}else{
+				return firstEasyScore;
+			}
+		}else if(level=="normal"){
+			if(normalScore>firstNormalScore){
+				firstNormalScore=normalScore;
+				return firstNormalScore;
+			}else{
+				return firstNormalScore;
+			}
 		}else{
-			return firstScore;
+			if(hardScore>firstHardScore){
+				firstHardScore=hardScore;
+				return firstHardScore;
+			}else{
+				return firstHardScore;
+			}
 		}
 	}
 }

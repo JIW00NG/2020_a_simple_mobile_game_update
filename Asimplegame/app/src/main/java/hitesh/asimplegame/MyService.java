@@ -33,7 +33,6 @@ public class MyService extends Service {
         super.onCreate();
         if(startActBgm){
             player = MediaPlayer.create(this, R.raw.sound_bgm_lobby);
-            System.out.println("브금");
         }else if(mainActBgm){
             player = MediaPlayer.create(this, R.raw.sound_bgm_stage01);
         }else if(resultActBgn){

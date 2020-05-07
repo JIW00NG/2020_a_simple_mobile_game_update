@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
+import static hitesh.asimplegame.QuestionActivity.getLevel;
 import static hitesh.asimplegame.ResultActivity.getfirstScore;
 
 /**
@@ -29,7 +30,13 @@ public class RankingWidget extends AppWidgetProvider{
 
         appWidgetManager.updateAppWidget(appWidgetId,views);
 
-        views.setTextViewText(R.id.appwidget_text, "Ranking 1th Score\n"+ getfirstScore());
+        if(getLevel()=="easy"){
+            views.setTextViewText(R.id.widget_easy_score, "Easy 1th Score : "+ getfirstScore(getLevel()));
+        }else if(getLevel()=="normal"){
+            views.setTextViewText(R.id.widget_normal_score, "Normal 1th Score : "+ getfirstScore(getLevel()));
+        }else{
+            views.setTextViewText(R.id.widget_hard_score, "Hard 1th Score : "+ getfirstScore(getLevel()));
+        }
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -65,7 +72,13 @@ public class RankingWidget extends AppWidgetProvider{
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.ranking_widget);
             ComponentName componentName = new ComponentName(context, RankingWidget.class);
 
-            views.setTextViewText(R.id.appwidget_text, "Ranking 1th Score\n"+ getfirstScore());
+            if(getLevel()=="easy"){
+                views.setTextViewText(R.id.widget_easy_score, "Easy 1th Score : "+ getfirstScore(getLevel()));
+            }else if(getLevel()=="normal"){
+                views.setTextViewText(R.id.widget_normal_score, "Normal 1th Score : "+ getfirstScore(getLevel()));
+            }else{
+                views.setTextViewText(R.id.widget_hard_score, "Hard 1th Score : "+ getfirstScore(getLevel()));
+            }
             appWidgetManager.updateAppWidget(componentName, views);
         }
     }
