@@ -21,3 +21,7 @@
  1. Add user DB by use firebase and storing user score in the DB
  2. socend integration
  3. Remove duplicate class
+
+2020.05.08
+ 1. Add User Personal Rankings and RankingActivity
+ 2. Modify idget
