@@ -28,21 +28,27 @@ public class QuestionActivity extends Activity {
     private static final String TAG = QuestionActivity.class.getSimpleName();
 
     private List<Question> questionList;
+    private static boolean easyLevel = false, normalLevel = false, hardLevel = false;
     private int score = 0;
     private long timeScore=0;
     private int questionID = 0;
-    private int gameTime=60000;
+    private int easyGameTime=60000;
+    private int normalGameTime=45000;
+    private int hardGameTime=30000;
     private int oneSec=1000;
-    private int hintLeft=0;
     private int numOfQuestion = 21; // for testing
     private boolean hintUsed = true;
+    private int hintLeft=0;
+    private int easyHint = 3;
+    private int normalHint = 2;
+    private int hardHint =1;
 
     private Question currentQ;
     private TextView txtQuestion, times, scored;
     private Button button1, button2, button3, hintBtn;
 
     // A timer of 60 seconds to play for, with an interval of 1 second (1000 milliseconds)
-    CounterClass timer = new CounterClass(gameTime, oneSec);
+        CounterClass timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +82,17 @@ public class QuestionActivity extends Activity {
         // method which will set the things up for our game
         setQuestionView();
         times.setText("00:02:00");
+
+        if(easyLevel){
+            hintLeft=easyHint;
+            timer = new CounterClass(easyGameTime, oneSec);
+        }else if(normalLevel){
+            hintLeft=normalHint;
+            timer = new CounterClass(normalGameTime, oneSec);
+        }else if(hardLevel){
+            hintLeft=hardHint;
+            timer = new CounterClass(hardGameTime, oneSec);
+        }
 
         timer.start();
 
@@ -114,8 +131,8 @@ public class QuestionActivity extends Activity {
             public void onClick(View v) {
 
                 if(hintUsed==true) {
-                    if (hintLeft < 3) {
-                        hintLeft++;
+                    if (hintLeft >0) {
+                        hintLeft--;
                         hintUsed=false;
                         if (hintResult(button1.getText().toString())) {
                             button1.setBackgroundColor(Color.GREEN);
@@ -230,7 +247,6 @@ public class QuestionActivity extends Activity {
                 times.setTextColor(Color.BLACK);
                 times.setTextSize(40);
                 times.setText(hms1);
-
             }
         }
 
@@ -245,5 +261,36 @@ public class QuestionActivity extends Activity {
         button3.setText(currentQ.getOPTC());
 
         questionID++;
+    }
+
+    public static String getLevel(){
+        if(easyLevel){
+            return "easy";
+        }
+        else if(normalLevel){
+            return "normal";
+        }
+        else{
+            //hardLevel
+            return "hard";
+        }
+    }
+
+    public static void setLevel(String level){
+        if(level=="easy"){
+            easyLevel=true;
+            normalLevel=false;
+            hardLevel=false;
+        }
+        if(level=="normal"){
+            easyLevel=false;
+            normalLevel=true;
+            hardLevel=false;
+        }
+        if(level=="hard"){
+            easyLevel=false;
+            normalLevel=false;
+            hardLevel=true;
+        }
     }
 }

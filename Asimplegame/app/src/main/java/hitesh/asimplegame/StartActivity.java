@@ -23,7 +23,7 @@ public class StartActivity extends Activity {
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(StartActivity.this, QuestionActivity.class);
+                Intent i = new Intent(StartActivity.this, GradeActivity.class);
                 startActivity(i);
                 stopService(intent);
                 finish();

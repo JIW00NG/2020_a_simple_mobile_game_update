@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import static hitesh.asimplegame.MyService.setResultBgm;
+import static hitesh.asimplegame.QuestionActivity.getLevel;
 import static hitesh.asimplegame.QuizDBOpenHelper.setDatabaseRandoming;
 
 public class ResultActivity extends Activity {
@@ -31,10 +32,11 @@ public class ResultActivity extends Activity {
 		TextView textResult = (TextView) findViewById(R.id.textResult);
 		Bundle b = getIntent().getExtras();
 		score = b.getInt("score");
-        textResult.setText("Your score is " + " " + score + ". Thanks for playing my game.");
+		String currentLevel = getLevel();
+        textResult.setText(currentLevel+" "+"Your score is " + " " + score + ". Thanks for playing my game.");
 
         User user = new User();
-        user.getBestScore("easy");
+        user.getBestScore(currentLevel);
 
 	}
 
