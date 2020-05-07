@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import static hitesh.asimplegame.MyService.setResultBgm;
 import static hitesh.asimplegame.QuizDBOpenHelper.setDatabaseRandoming;
 
 public class ResultActivity extends Activity {
@@ -23,7 +24,8 @@ public class ResultActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result);
 
-		final Intent intent = new Intent(this,MyService3.class);
+		setResultBgm();
+		final Intent intent = new Intent(this,MyService.class);
 		startService(intent);
 
 		TextView textResult = (TextView) findViewById(R.id.textResult);
@@ -40,7 +42,7 @@ public class ResultActivity extends Activity {
 
 		//다시시작시 데이터베이스 갱신
 		setDatabaseRandoming();
-		Intent bgmIntent = new Intent(this,MyService3.class);
+		Intent bgmIntent = new Intent(this,MyService.class);
 		stopService(bgmIntent);
 		Intent intent = new Intent(this, QuestionActivity.class);
 		startActivity(intent);
@@ -48,7 +50,7 @@ public class ResultActivity extends Activity {
 	}
 
 	public void exitToTitle(View view){
-		Intent bgmIntent = new Intent(this,MyService3.class);
+		Intent bgmIntent = new Intent(this,MyService.class);
 		stopService(bgmIntent);
 		Intent intent = new Intent(this,StartActivity.class);
 		startActivity(intent);

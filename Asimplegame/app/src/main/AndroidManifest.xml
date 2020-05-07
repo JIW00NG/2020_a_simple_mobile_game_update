@@ -41,20 +41,11 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".MyService1"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity android:name=".MyService2"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity android:name=".MyService3"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
-        </activity>
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
 
         <activity
             android:name=".QuestionActivity"
@@ -66,24 +57,6 @@
             android:name=".ResultActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
-
-        <service
-            android:name=".MyService1"
-            android:enabled="true"
-            android:exported="true">
-        </service>
-
-        <service
-            android:name=".MyService2"
-            android:enabled="true"
-            android:exported="true">
-        </service>
-
-        <service
-            android:name=".MyService3"
-            android:enabled="true"
-            android:exported="true">
-        </service>
 
         <meta-data
             android:name="preloaded_fonts"

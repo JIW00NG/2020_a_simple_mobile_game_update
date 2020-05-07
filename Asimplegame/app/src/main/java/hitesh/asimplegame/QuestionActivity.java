@@ -22,6 +22,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static hitesh.asimplegame.MyService.setMainBgm;
+
 public class QuestionActivity extends Activity {
     private static final String TAG = QuestionActivity.class.getSimpleName();
 
@@ -51,8 +53,8 @@ public class QuestionActivity extends Activity {
         QuizDBOpenHelper db = new QuizDBOpenHelper(this);  // my question bank class
         questionList = db.getAllQuestions();  // this will fetch all quetonall questions
         currentQ = questionList.get(questionID); // the current question
-
-//        startService(new Intent(QuestionActivity.this,MyService2.class));
+        setMainBgm();
+        startService(new Intent(QuestionActivity.this,MyService.class));
 
         txtQuestion = (TextView) findViewById(R.id.txtQuestion);
         // the textview in which the question will be displayed
@@ -145,7 +147,8 @@ public class QuestionActivity extends Activity {
             scored.setText("Score : " + score);
         } else {
             // if unlucky start activity and finish the game
-            stopService(new Intent(QuestionActivity.this,MyService2.class));
+
+            stopService(new Intent(QuestionActivity.this,MyService.class));
             Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
 
             // passing the int value
@@ -164,7 +167,7 @@ public class QuestionActivity extends Activity {
             setQuestionView();
         } else {
             // if over do this
-            stopService(new Intent(QuestionActivity.this,MyService2.class));
+            stopService(new Intent(QuestionActivity.this,MyService.class));
             Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
             Bundle b = new Bundle();
             b.putInt("score", score+(int)timeScore); // Your score
@@ -190,8 +193,7 @@ public class QuestionActivity extends Activity {
             times.setText("Time is up");
             // if unlucky start activity and finish the game
             Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
-            stopService(new Intent(QuestionActivity.this,MyService2.class));
-
+            stopService(new Intent(QuestionActivity.this,MyService.class));
             // passing the int value
             Bundle b = new Bundle();
             b.putInt("score", score); // Your score

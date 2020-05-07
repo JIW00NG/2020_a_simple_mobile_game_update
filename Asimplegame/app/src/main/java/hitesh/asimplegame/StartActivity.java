@@ -7,12 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import androidx.annotation.Nullable;
 
+import static hitesh.asimplegame.MyService.setStartBgm;
+
 public class StartActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        final Intent intent = new Intent(StartActivity.this, MyService1.class);
+        setStartBgm();
+        final Intent intent = new Intent(StartActivity.this, MyService.class);
         startService(intent);
         Button but1 = (Button)findViewById(R.id.but1);
         Button but2= (Button)findViewById(R.id.but2);

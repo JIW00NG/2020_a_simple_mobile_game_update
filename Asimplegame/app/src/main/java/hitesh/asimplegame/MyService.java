@@ -5,11 +5,10 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
 
-public class MyService1 extends Service {
+public class MyService extends Service {
     static boolean isPlay;
     MediaPlayer player;
-    public MyService1() {
-    }
+    private static boolean startActBgm = true, mainActBgm = false, resultActBgn = false;
 
     @Override
     public void onDestroy() {
@@ -32,7 +31,14 @@ public class MyService1 extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        player = MediaPlayer.create(this, hitesh.asimplegame.R.raw.sound_bgm_lobby);
+        if(startActBgm){
+            player = MediaPlayer.create(this, R.raw.sound_bgm_lobby);
+            System.out.println("브금");
+        }else if(mainActBgm){
+            player = MediaPlayer.create(this, R.raw.sound_bgm_stage01);
+        }else if(resultActBgn){
+            player = MediaPlayer.create(this, R.raw.sound_bgm_gameover);
+        }
     }
 
     @Override
@@ -40,4 +46,24 @@ public class MyService1 extends Service {
         // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
+    public static void setStartBgm(){
+        startActBgm =true;
+        mainActBgm = false;
+        resultActBgn = false;
+    }
+
+    public static void setMainBgm(){
+        mainActBgm =true;
+        startActBgm =false;
+        resultActBgn = false;
+    }
+
+    public static void setResultBgm(){
+        resultActBgn =true;
+        mainActBgm =false;
+        startActBgm =false;
+    }
+
+
 }
