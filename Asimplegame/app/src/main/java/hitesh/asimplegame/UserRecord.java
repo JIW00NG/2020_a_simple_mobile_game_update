@@ -15,14 +15,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import static hitesh.asimplegame.MyService.setStartBgm;
-
 public class UserRecord extends Activity {
 
     private TextView titleEasyLastScore, titleNormalLastScore, titleHardLastScore;
     private TextView titleEasyBestScore, titleNormalBestScore, titleHardBestScore;
+
+    private TextView titleDndLastScore,titleDndBestScore;
+    private TextView dndLastScoreValue,dndBestScoreValue;
 
     private TextView easyLastScoreValue, normalLastScoreValue, hardLastScoreValue;
     private TextView easyBestScoreValue, normalBestScoreValue, hardBestScoreValue;
@@ -43,26 +42,14 @@ public class UserRecord extends Activity {
         userName = (TextView) findViewById(R.id.user_name);
         userName.setText("User: "+user.getName());
 
-        titleEasyLastScore = (TextView) findViewById(R.id.easy_last_score);
-        titleNormalLastScore = (TextView) findViewById(R.id.normal_last_score);
-        titleHardLastScore = (TextView) findViewById(R.id.hard_last_score);
-        titleEasyLastScore.setText("easy last score: ");
-        titleNormalLastScore.setText("normal last score: ");
-        titleHardLastScore.setText("hard last score: ");
-
-        titleEasyBestScore = (TextView) findViewById(R.id.easy_best_score);
-        titleNormalBestScore = (TextView) findViewById(R.id.normal_best_score);
-        titleHardBestScore = (TextView) findViewById(R.id.hard_best_score);
-        titleEasyBestScore.setText("easy best score: ");
-        titleNormalBestScore.setText("normal best score: ");
-        titleHardBestScore.setText("hard best score: ");
-
         easyLastScoreValue = (TextView) findViewById(R.id.easy_last_score_value);
         easyBestScoreValue = (TextView) findViewById(R.id.easy_best_score_value);
         normalLastScoreValue = (TextView) findViewById(R.id.normal_last_score_value);
         normalBestScoreValue = (TextView) findViewById(R.id.normal_best_score_value);
         hardLastScoreValue = (TextView) findViewById(R.id.hard_last_score_value);
         hardBestScoreValue = (TextView) findViewById(R.id.hard_best_score_value);
+        dndLastScoreValue = (TextView) findViewById(R.id.dnd_1th_score);
+        dndBestScoreValue = (TextView) findViewById(R.id.dnd_best_score_value);
 
         backBtn = (Button) findViewById(R.id.back_button);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +116,26 @@ public class UserRecord extends Activity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
                 hardLastScoreValue.setText(String.valueOf(userValue.toString()));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
+        });
+
+        databaseReference.child(user.getName()).child("dnd_best").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Object userValue = dataSnapshot.getValue(Object.class);
+                dndBestScoreValue.setText(String.valueOf(userValue.toString()));
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {}
+        });
+
+        databaseReference.child(user.getName()).child("dnd_last").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Object userValue = dataSnapshot.getValue(Object.class);
+                dndLastScoreValue.setText(String.valueOf(userValue.toString()));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}

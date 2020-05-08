@@ -17,19 +17,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="15dp"
         android:layout_weight="1"
         android:background="@drawable/stroke"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/easy_last_score"
+            android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="TextView"
+            android:text="easy last score: "
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="17sp" />
 
@@ -49,19 +49,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="15dp"
         android:layout_weight="1"
         android:background="@drawable/stroke"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/easy_best_score"
+            android:id="@+id/text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="TextView"
+            android:text="easy best score: "
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="17sp" />
 
@@ -81,19 +81,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="15dp"
         android:layout_weight="1"
         android:background="@drawable/stroke"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/normal_last_score"
+            android:id="@+id/text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="TextView"
+            android:text="normal last score: "
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="17sp" />
 
@@ -113,19 +113,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="15dp"
         android:layout_weight="1"
         android:background="@drawable/stroke"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/normal_best_score"
+            android:id="@+id/text4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="TextView"
+            android:text="normal best score: "
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="17sp" />
 
@@ -145,19 +145,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="15dp"
         android:layout_weight="1"
         android:background="@drawable/stroke"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/hard_last_score"
+            android:id="@+id/text5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="TextView"
+            android:text="hard last score: "
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="17sp" />
 
@@ -177,24 +177,88 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="15dp"
         android:layout_weight="1"
         android:background="@drawable/stroke"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/hard_best_score"
+            android:id="@+id/text6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="TextView"
+            android:text="hard best score: "
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="17sp" />
 
         <TextView
             android:id="@+id/hard_best_score_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="now loading"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="23sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/stroke"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="dnd last score: "
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/dnd_1th_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="now loading"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="23sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/stroke"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="dnd best score: "
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/dnd_best_score_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

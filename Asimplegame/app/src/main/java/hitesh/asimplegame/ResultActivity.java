@@ -16,6 +16,7 @@ public class ResultActivity extends Activity {
 
 	private static int firstEasyScore, firstNormalScore, firstHardScore;
 	private static int easyScore,normalScore,hardScore;
+	private static int dndScore,firstDndScore;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,12 +82,19 @@ public class ResultActivity extends Activity {
 			}else{
 				return firstNormalScore;
 			}
-		}else{
+		}else if(level=="hard"){
 			if(hardScore>firstHardScore){
 				firstHardScore=hardScore;
 				return firstHardScore;
 			}else{
 				return firstHardScore;
+			}
+		}else{
+			if(dndScore>firstDndScore){
+				firstDndScore=dndScore;
+				return firstDndScore;
+			}else{
+				return firstDndScore;
 			}
 		}
 	}

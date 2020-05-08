@@ -53,7 +53,7 @@ public class QuizDBOpenHelper extends SQLiteOpenHelper {
         Question q[]=new Question[NumberOfQuestion];
 
         for(int i=0;i<NumberOfQuestion;i++){
-            rq[i]=new RandomQuestion();
+            rq[i]=new RandomQuestion("DND");
             addQuestion(rq[i]);
         }
 

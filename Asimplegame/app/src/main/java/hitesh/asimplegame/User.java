@@ -16,6 +16,7 @@ public class User {
 
     private String name,email;
     private int easyBest, easyLast, normalBest, normalLast, hardBest, hardLast;
+    private int dndScore;
 
     FirebaseUser user = FirebaseAuth.getInstance(). getCurrentUser();
 
@@ -41,6 +42,7 @@ public class User {
         databaseReference.child(name).child("hard_last").setValue(0);
         databaseReference.child(name).child("email").setValue(email);
         databaseReference.child(name).child("user_name").setValue(username);
+        databaseReference.child(name).child("dnd_score").setValue(0);
     }
 
 
