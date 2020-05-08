@@ -11,12 +11,15 @@ import android.widget.TextView;
 import static hitesh.asimplegame.MyService.setResultBgm;
 import static hitesh.asimplegame.QuestionActivity.getLevel;
 import static hitesh.asimplegame.QuizDBOpenHelper.setDatabaseRandoming;
+import static hitesh.asimplegame.StartActivity.getGame;
+import static hitesh.asimplegame.StartActivity.setGame;
 
-public class ResultActivity extends Activity {
+public class GeneralResultActivity extends Activity {
 
 	private static int firstEasyScore, firstNormalScore, firstHardScore;
 	private static int easyScore,normalScore,hardScore;
 	private static int dndScore,firstDndScore;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +34,24 @@ public class ResultActivity extends Activity {
 		TextView textResult = (TextView) findViewById(R.id.textResult);
 		Bundle b = getIntent().getExtras();
         User user = new User();
-		if(getLevel()=="easy"){
-			easyScore = b.getInt("score");
-        	textResult.setText("Your Easy level score is " + " " + easyScore + ". Thanks for playing my game.");
-        	user.setBestScore("easy");
-		}else if(getLevel()=="normal"){
-			normalScore=b.getInt("score");
-        	textResult.setText("Your normal level score is " + " " + normalScore + ". Thanks for playing my game.");
-        	user.setBestScore("normal");
-		}else if(getLevel()=="hard"){
-			hardScore=b.getInt("score");
-        	textResult.setText("Your hard level score is " + " " + hardScore + ". Thanks for playing my game.");
-        	user.setBestScore("hard");
+        if(getGame()=="general"){
+			if(getLevel()=="easy"){
+				easyScore = b.getInt("score");
+				textResult.setText("Your Easy level score is " + " " + easyScore + ". Thanks for playing my game.");
+				user.setBestScore("easy");
+			}else if(getLevel()=="normal"){
+				normalScore=b.getInt("score");
+				textResult.setText("Your normal level score is " + " " + normalScore + ". Thanks for playing my game.");
+				user.setBestScore("normal");
+			}else if(getLevel()=="hard"){
+				hardScore=b.getInt("score");
+				textResult.setText("Your hard level score is " + " " + hardScore + ". Thanks for playing my game.");
+				user.setBestScore("hard");
+			}
+        }else if(getGame()=="dnd"){
+			dndScore=b.getInt("score");
+			textResult.setText("Your dnd score is " + " " + dndScore + ". Thanks for playing my game.");
+			user.setBestScore("dnd");
 		}
 
 
@@ -54,9 +63,15 @@ public class ResultActivity extends Activity {
 		setDatabaseRandoming();
 		Intent bgmIntent = new Intent(this,MyService.class);
 		stopService(bgmIntent);
-		Intent intent = new Intent(this, QuestionActivity.class);
-		startActivity(intent);
-		finish();
+		if(getGame()=="general"){
+			Intent intent = new Intent(this, QuestionActivity.class);
+			startActivity(intent);
+			finish();
+		}else if(getGame()=="dnd"){
+			Intent intent = new Intent(this, DragAndDropActivity.class);
+			startActivity(intent);
+			finish();
+		}
 	}
 
 	public void exitToTitle(View view){
@@ -65,6 +80,9 @@ public class ResultActivity extends Activity {
 		Intent intent = new Intent(this,StartActivity.class);
 		startActivity(intent);
 		finish();
+		//다시시작시 데이터베이스 갱신
+		setGame("general");
+		setDatabaseRandoming();
 	}
 
 	public static int getFirstScore(String level){
@@ -90,6 +108,7 @@ public class ResultActivity extends Activity {
 				return firstHardScore;
 			}
 		}else{
+			//dnd
 			if(dndScore>firstDndScore){
 				firstDndScore=dndScore;
 				return firstDndScore;

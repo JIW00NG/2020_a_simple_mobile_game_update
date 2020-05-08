@@ -60,12 +60,12 @@ public class RandomQuestion extends Question{
         answerNum = 0;
 
         for(int i=0; i<3; i++) {
-            correctNum[i]=random.nextInt(10)+1;
+            correctNum[i]=random.nextInt(9)+1;
             listNum[i] = correctNum[i];
         }
 
         for(int i=0; i<3; i++) {
-            disCorrectNum[i] = random.nextInt(10)+1;
+            disCorrectNum[i] = random.nextInt(9)+1;
             listNum[i+3] = disCorrectNum[i];
         }
         for(int i=0; i<2; i++) {

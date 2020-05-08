@@ -9,6 +9,8 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 
 import static hitesh.asimplegame.QuestionActivity.setLevel;
+import static hitesh.asimplegame.QuizDBOpenHelper.setDatabaseRandoming;
+import static hitesh.asimplegame.StartActivity.setGame;
 
 public class GradeActivity extends Activity {
 
@@ -16,6 +18,10 @@ public class GradeActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.activity_grade);
         super.onCreate(savedInstanceState);
+
+        setGame("general");
+        setDatabaseRandoming();
+
         Button button1 = findViewById(R.id.easy);
         Button button2 = findViewById(R.id.normal);
         Button button3 = findViewById(R.id.hard);

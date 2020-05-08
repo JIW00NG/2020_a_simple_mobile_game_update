@@ -8,8 +8,11 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 
 import static hitesh.asimplegame.MyService.setStartBgm;
+import static hitesh.asimplegame.QuestionActivity.setLevel;
 
 public class StartActivity extends Activity {
+    private static String game;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,7 @@ public class StartActivity extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(StartActivity.this, GradeActivity.class);
                 startActivity(i);
+                setGame("general");
                 stopService(bgmIntent);
                 finish();
             }
@@ -58,12 +62,22 @@ public class StartActivity extends Activity {
         but5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setGame("dnd");
+                setLevel("dnd");
                 Intent intent = new Intent(StartActivity.this, ButtonActivity.class);
                 startActivity(intent);
                 stopService(bgmIntent);
                 finish();
             }
         });
+    }
+
+    public static void setGame(String g) {
+        game = g;
+    }
+
+    public static String getGame() {
+        return game;
     }
 }
 

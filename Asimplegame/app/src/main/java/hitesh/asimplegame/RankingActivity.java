@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static hitesh.asimplegame.ResultActivity.getFirstScore;
+import static hitesh.asimplegame.GeneralResultActivity.getFirstScore;
 
 public class RankingActivity extends Activity {
 
@@ -61,7 +61,7 @@ public class RankingActivity extends Activity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
-                easyBestScoreValue.setText(userValue.toString());
+                easyBestUser.setText(userValue.toString());
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
@@ -72,10 +72,10 @@ public class RankingActivity extends Activity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
                 if(Integer.parseInt(userValue.toString())<getFirstScore("easy")){
-                    databaseReference.child("easy_1th_user_score").setValue(ResultActivity.getFirstScore("easy"));
+                    databaseReference.child("easy_1th_user_score").setValue(GeneralResultActivity.getFirstScore("easy"));
                     databaseReference.child("easy_1th_user").setValue(user.getName());
                 }
-                easyBestUser.setText(String.valueOf(userValue.toString()));
+                easyBestScoreValue.setText(String.valueOf(userValue.toString()));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
@@ -85,7 +85,7 @@ public class RankingActivity extends Activity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
-                normalBestScoreValue.setText(String.valueOf(userValue.toString()));
+                normalBestUser.setText(String.valueOf(userValue.toString()));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
@@ -96,10 +96,10 @@ public class RankingActivity extends Activity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
                 if(Integer.parseInt(userValue.toString())<getFirstScore("normal")){
-                    databaseReference.child("normal_1th_user_score").setValue(ResultActivity.getFirstScore("normal"));
+                    databaseReference.child("normal_1th_user_score").setValue(GeneralResultActivity.getFirstScore("normal"));
                     databaseReference.child("normal_1th_user").setValue(user.getName());
                 }
-                normalBestUser.setText(String.valueOf(userValue.toString()));
+                normalBestScoreValue.setText(String.valueOf(userValue.toString()));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
@@ -109,7 +109,7 @@ public class RankingActivity extends Activity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
-                hardBestScoreValue.setText(String.valueOf(userValue.toString()));
+                hardBestUser.setText(String.valueOf(userValue.toString()));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
@@ -120,10 +120,10 @@ public class RankingActivity extends Activity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
                 if(Integer.parseInt(userValue.toString())<getFirstScore("hard")){
-                    databaseReference.child("hard_1th_user_score").setValue(ResultActivity.getFirstScore("hard"));
+                    databaseReference.child("hard_1th_user_score").setValue(GeneralResultActivity.getFirstScore("hard"));
                     databaseReference.child("hard_1th_user").setValue(user.getName());
                 }
-                hardBestUser.setText(String.valueOf(userValue.toString()));
+                hardBestScoreValue.setText(String.valueOf(userValue.toString()));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
@@ -133,7 +133,7 @@ public class RankingActivity extends Activity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
-                dndBestScoreValue.setText(String.valueOf(userValue.toString()));
+                dndBestUser.setText(String.valueOf(userValue.toString()));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
@@ -144,11 +144,11 @@ public class RankingActivity extends Activity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
                 dndBestScoreValue.setText(String.valueOf(userValue.toString()));
-                if(Integer.parseInt(userValue.toString())<getFirstScore("DND")){
-                    databaseReference.child("dnd_1th_user_score").setValue(ResultActivity.getFirstScore("DND"));
+                if(Integer.parseInt(userValue.toString())<getFirstScore("dnd")){
+                    databaseReference.child("dnd_1th_user_score").setValue(GeneralResultActivity.getFirstScore("dnd"));
                     databaseReference.child("dnd_1th_user").setValue(user.getName());
                 }
-                dndBestUser.setText(String.valueOf(userValue.toString()));
+                dndBestScoreValue.setText(String.valueOf(userValue.toString()));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}

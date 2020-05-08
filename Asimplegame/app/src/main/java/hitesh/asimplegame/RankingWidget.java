@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 
 import static hitesh.asimplegame.QuestionActivity.getLevel;
-import static hitesh.asimplegame.ResultActivity.getFirstScore;
+import static hitesh.asimplegame.GeneralResultActivity.getFirstScore;
 
 /**
  * Implementation of App Widget functionality.

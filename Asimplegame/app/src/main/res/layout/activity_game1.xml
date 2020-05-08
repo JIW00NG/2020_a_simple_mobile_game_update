@@ -5,29 +5,76 @@
     android:id="@+id/MainLinear"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_background"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="133dp"
+        android:id="@+id/scoreLinear"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/ScoreView"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="Score : " />
+            android:text="Score : "
+            android:textColor="#0C0C0C"
+            android:textColorHighlight="#814747" />
 
         <TextView
             android:id="@+id/ScoreValueView"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="0" />
+            android:text="0"
+            android:textColor="#0C0C0C"
+            android:textColorHighlight="#814747" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/numberLinear"
+        android:id="@+id/lifeLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/LifeView"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="Life : "
+            android:textColor="#0C0C0C"
+            android:textColorHighlight="#814747" />
+
+        <TextView
+            android:id="@+id/LifeViewValue"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:text="1"
+            android:textColor="#0C0C0C"
+            android:textColorHighlight="#814747" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="411dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/operator_card"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="P u z z l e   L i s t"
+            android:textColor="#131513"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"
+            android:verticalScrollbarPosition="defaultPosition" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/numberLinear1"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal">
@@ -37,48 +84,48 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/edge"
-            android:clickable="true"
+            android:background="@drawable/number_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:inputType="text"
             android:singleLine="true"
-            android:text="1" />
+            android:text="1"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/NumberView2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/number_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:inputType="text"
             android:singleLine="true"
-            android:text="2" />
+            android:text="2"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/NumberView3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/number_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:inputType="text"
             android:singleLine="true"
-            android:text="3" />
+            android:text="3"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/NumberView4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/number_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:inputType="text"
             android:singleLine="true"
-            android:text="4" />
+            android:text="4"
+            android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/numberLinear2"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal">
@@ -88,44 +135,78 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/number_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:inputType="text"
             android:singleLine="true"
-            android:text="5" />
+            android:text="5"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/NumberView6"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/number_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:inputType="text"
             android:singleLine="true"
-            android:text="6" />
+            android:text="6"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/operView1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/operator_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:inputType="text"
             android:singleLine="true"
-            android:text="+" />
+            android:text="+"
+            android:textSize="35sp" />
 
         <TextView
             android:id="@+id/operView2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/operator_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:inputType="text"
             android:singleLine="true"
-            android:text="-" />
+            android:text="-"
+            android:textSize="35sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_gravity="center"
+        android:background="@drawable/operator_card"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:orientation="vertical"></LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="▽   D r a g     a n d     D r o p    ▽"
+            android:textColor="#151313"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:orientation="vertical"></LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -136,55 +217,70 @@
 
         <TextView
             android:id="@+id/targetView1"
-            android:layout_width="wrap_content"
+            android:layout_width="2dp"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/number_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/targetView2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/operator_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/targetView3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/number_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/targetView4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/operator_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/targetView5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/number_card"
             android:gravity="center|center_horizontal|center_vertical"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="30sp" />
 
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"></LinearLayout>
+
+    <LinearLayout
         android:id="@+id/resultLinear"
         android:layout_width="match_parent"
-        android:layout_height="179dp"
+        android:layout_height="138dp"
         android:orientation="horizontal">
 
         <TextView
@@ -192,11 +288,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/operator_card"
             android:gravity="center"
             android:singleLine="true"
             android:text="="
             android:textAllCaps="false"
+            android:textColor="#020202"
             android:textSize="90sp" />
 
         <TextView
@@ -204,21 +301,29 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/edge"
+            android:background="@drawable/operator_card"
             android:gravity="center|center_horizontal"
             android:singleLine="true"
-            android:text="55" />
+            android:text="55"
+            android:textColor="#020202"
+            android:textSize="40sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="12dp"
+        android:orientation="horizontal"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/resetButton"
             android:layout_width="206dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/main_background"
             android:text="reset" />
 
         <Button
@@ -226,6 +331,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/main_background"
             android:onClick="reset"
             android:text="Next" />
 

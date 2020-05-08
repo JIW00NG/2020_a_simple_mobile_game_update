@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.RequiresApi;
@@ -20,6 +19,8 @@ import android.widget.TextView;
 import java.util.Random;
 
 import static hitesh.asimplegame.MyService.setMainBgm;
+import static hitesh.asimplegame.QuizDBOpenHelper.setDatabaseRandoming;
+import static hitesh.asimplegame.StartActivity.setGame;
 
 public class DragAndDropActivity extends Activity {
     private TextView[] num = new TextView[6] ;
@@ -28,9 +29,11 @@ public class DragAndDropActivity extends Activity {
     private TextView oper2;
     private TextView answer;
     private TextView scoreView;
+    private TextView lifeView;
     private static RandomQuestionHandler RQHandler = new RandomQuestionHandler();
     private RandomQuestion RQ;
     private static int score = 0;
+    private static int life;
     private static final String UNUSED_TEXTVIEW_TAG = "0";
     private static final String USED_TEXTVIEW_TAG = "1";
     private Object CharSequence;
@@ -43,7 +46,7 @@ public class DragAndDropActivity extends Activity {
 
         setMainBgm();
         startService(new Intent(DragAndDropActivity.this,MyService.class));
-
+        life = 1;
 
         if(RQHandler.getResetRQ()==null) {    // 새로운 문제를 받아도 된다면 랜덤 문제 적용
             RQ = RQHandler.getNewRQ();
@@ -54,18 +57,37 @@ public class DragAndDropActivity extends Activity {
         }
         initializeValues();
 
-        Button next =  (Button) findViewById(R.id.nextButton);
+        Button next =  (Button) findViewById(R.id.nextButton);       // 버툰 설정
         Button reset = (Button) findViewById(R.id.resetButton);
-        scoreView = (TextView) findViewById(R.id.ScoreValueView);
+        scoreView = (TextView) findViewById(R.id.ScoreValueView);    // 점수 설정
+        lifeView = (TextView) findViewById(R.id.LifeViewValue);      // 목숨 설정
         scoreView.setText(String.valueOf(score));
+        lifeView.setText(String.valueOf(life));
+
 
         next.setOnClickListener(new View.OnClickListener() {           //next button
             @Override
             public void onClick(View view) {
 
-                if(isCorrect()) score++;
-                Intent intent = new Intent(DragAndDropActivity.this, ButtonActivity.class);
-                startActivity(intent);
+                if(isCorrect()) {      // 맞았을때
+                    score++;
+                }
+                else life--;          // 틀렸을때
+
+                if(life == 0) {       // life가 0으로 게임이 끝날때
+                    Intent intent = new Intent(DragAndDropActivity.this, GeneralResultActivity.class);
+                    Bundle b = new Bundle();
+                    b.putInt("score", score); // 스코어 보내기
+                    intent.putExtras(b); //
+                    startActivity(intent);
+                    score = 0;
+                    finish();
+                    //다시시작시 데이터베이스 갱신
+                }
+                else {                // 다음문제로 넘어갈때
+                    Intent intent = new Intent(DragAndDropActivity.this, ButtonActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -128,11 +150,11 @@ public class DragAndDropActivity extends Activity {
 
         for(int i=0; i<6; i++) {
             number[i] = random.nextInt(6);
-                for(int j=0; j<i; j++) {
-                    if(number[i] == number[j]) {
-                        i--;
-                    }
+            for(int j=0; j<i; j++) {
+                if(number[i] == number[j]) {
+                    i--;
                 }
+            }
         }
 
         num[number[0]] = (TextView) findViewById(R.id.NumberView1);
@@ -173,7 +195,6 @@ public class DragAndDropActivity extends Activity {
         findViewById(R.id.targetView4).setOnDragListener(new DragListener());
         findViewById(R.id.targetView5).setOnDragListener(new DragListener());
 
-
     }
     private final class LongClickListener implements OnLongClickListener {
 
@@ -197,8 +218,8 @@ public class DragAndDropActivity extends Activity {
     }
 
     class DragListener implements OnDragListener{
-//        Drawable normalShape = getResources().getDrawable(R.drawable.normal_shape);
-//        Drawable targetShape = getResources().getDrawable(R.drawable.target_shape);
+        //Drawable normalShape = getResources().getDrawable(R.drawable.normal_shape);
+        //Drawable targetShape = getResources().getDrawable(R.drawable.target_shape);
 
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         public boolean onDrag(View v, DragEvent event) {
@@ -328,8 +349,8 @@ public class DragAndDropActivity extends Activity {
                 default:
                     break;
 
-                }
-                return true;
+            }
+            return true;
         }
     }
 

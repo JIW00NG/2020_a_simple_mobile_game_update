@@ -15,8 +15,7 @@ import static hitesh.asimplegame.QuestionActivity.getLevel;
 public class User {
 
     private String name,email;
-    private int easyBest, easyLast, normalBest, normalLast, hardBest, hardLast;
-    private int dndScore;
+    private int score;
 
     FirebaseUser user = FirebaseAuth.getInstance(). getCurrentUser();
 
@@ -47,15 +46,16 @@ public class User {
 
 
     public void setBestScore(final String level){
+
+        databaseReference.child(name).child(level+"_last").setValue(GeneralResultActivity.getFirstScore(getLevel()));
         databaseReference.child(name).child(level+"_best").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object value = dataSnapshot.getValue(Object.class);
                 String scoreStr = value.toString();
-                setScore(scoreStr,level);
-                databaseReference.child(name).child(level+"_last").setValue(ResultActivity.getFirstScore(getLevel()));
-                if(Integer.parseInt(scoreStr)<ResultActivity.getFirstScore(getLevel())){
-                    databaseReference.child(name).child(level+"_best").setValue(ResultActivity.getFirstScore(getLevel()));
+                setScore(scoreStr);
+                if(Integer.parseInt(scoreStr)< GeneralResultActivity.getFirstScore(getLevel())){
+                    databaseReference.child(name).child(level+"_best").setValue(GeneralResultActivity.getFirstScore(getLevel()));
                 }
             }
 
@@ -67,15 +67,8 @@ public class User {
 
     }
 
-    public void setScore(String score,String level){
-//        if(level=="easy"){
-//
-//        }else if(level=="normal"){
-//
-//        }else if(level=="hard"){
-//
-//        }
-        easyBest=Integer.parseInt(score);
+    public void setScore(String score){
+        this.score=Integer.parseInt(score);
     }
 
     public String getName(){

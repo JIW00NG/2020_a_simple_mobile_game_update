@@ -166,7 +166,7 @@ public class QuestionActivity extends Activity {
             // if unlucky start activity and finish the game
 
             stopService(new Intent(QuestionActivity.this,MyService.class));
-            Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
+            Intent intent = new Intent(QuestionActivity.this, GeneralResultActivity.class);
 
             // passing the int value
             Bundle b = new Bundle();
@@ -185,7 +185,7 @@ public class QuestionActivity extends Activity {
         } else {
             // if over do this
             stopService(new Intent(QuestionActivity.this,MyService.class));
-            Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
+            Intent intent = new Intent(QuestionActivity.this, GeneralResultActivity.class);
             Bundle b = new Bundle();
             b.putInt("score", score+(int)timeScore); // Your score
             intent.putExtras(b); // Put your score to your next
@@ -209,7 +209,7 @@ public class QuestionActivity extends Activity {
         public void onFinish() {
             times.setText("Time is up");
             // if unlucky start activity and finish the game
-            Intent intent = new Intent(QuestionActivity.this, ResultActivity.class);
+            Intent intent = new Intent(QuestionActivity.this, GeneralResultActivity.class);
             stopService(new Intent(QuestionActivity.this,MyService.class));
             // passing the int value
             Bundle b = new Bundle();
