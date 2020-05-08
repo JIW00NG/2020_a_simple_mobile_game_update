@@ -66,7 +66,7 @@ public class ResultActivity extends Activity {
 		finish();
 	}
 
-	public static int getfirstScore(String level){
+	public static int getFirstScore(String level){
 		if(level=="easy"){
 			if(easyScore>firstEasyScore){
 				firstEasyScore=easyScore;

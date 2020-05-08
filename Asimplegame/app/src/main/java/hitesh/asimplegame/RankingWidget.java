@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 
 import static hitesh.asimplegame.QuestionActivity.getLevel;
-import static hitesh.asimplegame.ResultActivity.getfirstScore;
+import static hitesh.asimplegame.ResultActivity.getFirstScore;
 
 /**
  * Implementation of App Widget functionality.
@@ -31,11 +31,11 @@ public class RankingWidget extends AppWidgetProvider{
         appWidgetManager.updateAppWidget(appWidgetId,views);
 
         if(getLevel()=="easy"){
-            views.setTextViewText(R.id.widget_easy_score, "Easy 1th Score : "+ getfirstScore(getLevel()));
+            views.setTextViewText(R.id.widget_easy_score, "Easy 1th Score : "+ getFirstScore(getLevel()));
         }else if(getLevel()=="normal"){
-            views.setTextViewText(R.id.widget_normal_score, "Normal 1th Score : "+ getfirstScore(getLevel()));
+            views.setTextViewText(R.id.widget_normal_score, "Normal 1th Score : "+ getFirstScore(getLevel()));
         }else{
-            views.setTextViewText(R.id.widget_hard_score, "Hard 1th Score : "+ getfirstScore(getLevel()));
+            views.setTextViewText(R.id.widget_hard_score, "Hard 1th Score : "+ getFirstScore(getLevel()));
         }
 
         // Instruct the widget manager to update the widget
@@ -73,11 +73,11 @@ public class RankingWidget extends AppWidgetProvider{
             ComponentName componentName = new ComponentName(context, RankingWidget.class);
 
             if(getLevel()=="easy"){
-                views.setTextViewText(R.id.widget_easy_score, "Easy 1th Score : "+ getfirstScore(getLevel()));
+                views.setTextViewText(R.id.widget_easy_score, "Easy 1th Score : "+ getFirstScore(getLevel()));
             }else if(getLevel()=="normal"){
-                views.setTextViewText(R.id.widget_normal_score, "Normal 1th Score : "+ getfirstScore(getLevel()));
+                views.setTextViewText(R.id.widget_normal_score, "Normal 1th Score : "+ getFirstScore(getLevel()));
             }else{
-                views.setTextViewText(R.id.widget_hard_score, "Hard 1th Score : "+ getfirstScore(getLevel()));
+                views.setTextViewText(R.id.widget_hard_score, "Hard 1th Score : "+ getFirstScore(getLevel()));
             }
             appWidgetManager.updateAppWidget(componentName, views);
         }

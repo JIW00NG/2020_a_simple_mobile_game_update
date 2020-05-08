@@ -39,19 +39,30 @@
         android:text="RANKING"
         android:textColor="@android:color/white"
         android:textSize="35sp" />
-            <Button
-                android:id="@+id/but3"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:text="EXIT"
-                android:textSize="35sp"
-                android:textColor="@android:color/white"
-                android:background="@android:color/black"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:layout_gravity="center"
 
-                />
+    <Button
+        android:id="@+id/but4"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:text="USER RECORD"
+        android:textColor="@android:color/white"
+        android:textSize="35sp" />
+
+    <Button
+        android:id="@+id/but3"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="EXIT"
+        android:textSize="35sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/black"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_gravity="center" />
 
 
 

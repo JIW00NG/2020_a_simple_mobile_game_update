@@ -51,9 +51,9 @@ public class User {
                 Object value = dataSnapshot.getValue(Object.class);
                 String scoreStr = value.toString();
                 setScore(scoreStr,level);
-                databaseReference.child(name).child(level+"_last").setValue(ResultActivity.getfirstScore(getLevel()));
-                if(Integer.parseInt(scoreStr)<ResultActivity.getfirstScore(getLevel())){
-                    databaseReference.child(name).child(level+"_best").setValue(ResultActivity.getfirstScore(getLevel()));
+                databaseReference.child(name).child(level+"_last").setValue(ResultActivity.getFirstScore(getLevel()));
+                if(Integer.parseInt(scoreStr)<ResultActivity.getFirstScore(getLevel())){
+                    databaseReference.child(name).child(level+"_best").setValue(ResultActivity.getFirstScore(getLevel()));
                 }
             }
 

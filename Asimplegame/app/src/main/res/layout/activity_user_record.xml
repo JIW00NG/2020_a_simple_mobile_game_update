@@ -9,18 +9,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:gravity="center"
-        android:text="RANKING"
+        android:text="TextView"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="25sp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:background="@drawable/stroke"
-        android:gravity="center"
-        android:text="EASY 1th" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,6 +51,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="30dp"
         android:layout_weight="1"
+        android:background="@drawable/stroke"
         android:orientation="vertical">
 
         <TextView
@@ -84,15 +76,6 @@
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="23sp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:background="@drawable/stroke"
-        android:gravity="center"
-        android:text="NORMAL 1th" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -132,6 +115,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="30dp"
         android:layout_weight="1"
+        android:background="@drawable/stroke"
         android:orientation="vertical">
 
         <TextView
@@ -156,15 +140,6 @@
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="23sp" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:background="@drawable/stroke"
-        android:gravity="center"
-        android:text="HARD 1th" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -204,6 +179,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="30dp"
         android:layout_weight="1"
+        android:background="@drawable/stroke"
         android:orientation="vertical">
 
         <TextView

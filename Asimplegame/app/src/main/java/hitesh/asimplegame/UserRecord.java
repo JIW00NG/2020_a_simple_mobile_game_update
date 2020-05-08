@@ -15,11 +15,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static hitesh.asimplegame.ResultActivity.getFirstScore;
+import org.w3c.dom.Text;
 
-public class RankingActivity extends Activity {
+public class UserRecord extends Activity {
 
-    private TextView easy1thUser, normal1thUser, hard1thUser;
+    private TextView titleEasyLastScore, titleNormalLastScore, titleHardLastScore;
     private TextView titleEasyBestScore, titleNormalBestScore, titleHardBestScore;
 
     private TextView easyLastScoreValue, normalLastScoreValue, hardLastScoreValue;
@@ -31,26 +31,29 @@ public class RankingActivity extends Activity {
     User user = new User();
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference databaseReference = database.getReference("ranking");
+    DatabaseReference databaseReference = database.getReference("user");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ranking);
+        setContentView(R.layout.activity_user_record);
 
-        easy1thUser = (TextView) findViewById(R.id.easy_last_score);
-        normal1thUser = (TextView) findViewById(R.id.normal_last_score);
-        hard1thUser = (TextView) findViewById(R.id.hard_last_score);
-        easy1thUser.setText("score: ");
-        normal1thUser.setText("score: ");
-        hard1thUser.setText("score: ");
+        userName = (TextView) findViewById(R.id.user_name);
+        userName.setText("User: "+user.getName());
+
+        titleEasyLastScore = (TextView) findViewById(R.id.easy_last_score);
+        titleNormalLastScore = (TextView) findViewById(R.id.normal_last_score);
+        titleHardLastScore = (TextView) findViewById(R.id.hard_last_score);
+        titleEasyLastScore.setText("easy last score: ");
+        titleNormalLastScore.setText("normal last score: ");
+        titleHardLastScore.setText("hard last score: ");
 
         titleEasyBestScore = (TextView) findViewById(R.id.easy_best_score);
         titleNormalBestScore = (TextView) findViewById(R.id.normal_best_score);
         titleHardBestScore = (TextView) findViewById(R.id.hard_best_score);
-        titleEasyBestScore.setText("user name: ");
-        titleNormalBestScore.setText("user name: ");
-        titleHardBestScore.setText("user name: ");
+        titleEasyBestScore.setText("easy best score: ");
+        titleNormalBestScore.setText("normal best score: ");
+        titleHardBestScore.setText("hard best score: ");
 
         easyLastScoreValue = (TextView) findViewById(R.id.easy_last_score_value);
         easyBestScoreValue = (TextView) findViewById(R.id.easy_best_score_value);
@@ -63,37 +66,33 @@ public class RankingActivity extends Activity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RankingActivity.this,StartActivity.class);
+                Intent intent = new Intent(UserRecord.this,StartActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        databaseReference.child("easy_1th_user").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(user.getName()).child("easy_best").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
-                easyBestScoreValue.setText(userValue.toString());
+                easyBestScoreValue.setText(String.valueOf(userValue.toString()));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
 
-        databaseReference.child("easy_1th_user_score").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(user.getName()).child("easy_last").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
-                if(Integer.parseInt(userValue.toString())<getFirstScore("easy")){
-                    databaseReference.child("easy_1th_user_score").setValue(ResultActivity.getFirstScore("easy"));
-                    databaseReference.child("easy_1th_user").setValue(user.getName());
-                }
                 easyLastScoreValue.setText(String.valueOf(userValue.toString()));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
 
-        databaseReference.child("normal_1th_user").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(user.getName()).child("normal_best").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
@@ -103,7 +102,7 @@ public class RankingActivity extends Activity {
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
 
-        databaseReference.child("normal_1th_user_score").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(user.getName()).child("normal_last").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
@@ -113,7 +112,7 @@ public class RankingActivity extends Activity {
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
 
-        databaseReference.child("hard_1th_user").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(user.getName()).child("hard_best").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
@@ -123,7 +122,7 @@ public class RankingActivity extends Activity {
             public void onCancelled(@NonNull DatabaseError databaseError) {}
         });
 
-        databaseReference.child("hard_1th_user_score").addValueEventListener(new ValueEventListener() {
+        databaseReference.child(user.getName()).child("hard_last").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Object userValue = dataSnapshot.getValue(Object.class);
