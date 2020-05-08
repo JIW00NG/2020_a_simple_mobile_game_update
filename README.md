@@ -26,3 +26,4 @@
  1. Add User Personal Rankings and RankingActivity
  2. Modify idget
  3. Add UserRecord for viewing personal score
+ 4. Third integration
