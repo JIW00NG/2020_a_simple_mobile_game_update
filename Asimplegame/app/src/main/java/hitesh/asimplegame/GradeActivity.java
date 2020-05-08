@@ -32,24 +32,6 @@ public class GradeActivity extends Activity {
                 //easy 난이도
                 setLevel("easy");
                 Intent intent = new Intent(GradeActivity.this, QuestionActivity.class);
-//                inputStream=getResources().openRawResource(R.raw.grade);
-//                try {
-//                    properties.load(inputStream);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }finally {
-//                    if(inputStream!=null){
-//                        try {
-//                            inputStream.close();
-//                        } catch (IOException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }
-//                Bundle bundle =new Bundle();
-//                bundle.putInt("x", Integer.parseInt(properties.getProperty("x")));
-//                bundle.putInt("hint", Integer.parseInt(properties.getProperty("hint")));
-//                intent.putExtras(bundle);
                 stopService(new Intent(GradeActivity.this,MyService.class));
                 startActivity(intent);
                 finish();

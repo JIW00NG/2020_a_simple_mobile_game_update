@@ -34,8 +34,10 @@ public class RankingWidget extends AppWidgetProvider{
             views.setTextViewText(R.id.widget_easy_score, "E 1th Score : "+ getFirstScore(getLevel()));
         }else if(getLevel()=="normal"){
             views.setTextViewText(R.id.widget_normal_score, "N 1th Score : "+ getFirstScore(getLevel()));
-        }else{
+        }else if(getLevel()=="hard"){
             views.setTextViewText(R.id.widget_hard_score, "H 1th Score : "+ getFirstScore(getLevel()));
+        }else if(getLevel()=="dnd"){
+            views.setTextViewText(R.id.widget_dnd_first_score, "D 1th Score : "+ getFirstScore(getLevel()));
         }
 
         // Instruct the widget manager to update the widget
@@ -73,11 +75,13 @@ public class RankingWidget extends AppWidgetProvider{
             ComponentName componentName = new ComponentName(context, RankingWidget.class);
 
             if(getLevel()=="easy"){
-                views.setTextViewText(R.id.widget_easy_score, "Easy 1th Score : "+ getFirstScore(getLevel()));
+                views.setTextViewText(R.id.widget_easy_score, "E 1th Score : "+ getFirstScore(getLevel()));
             }else if(getLevel()=="normal"){
-                views.setTextViewText(R.id.widget_normal_score, "Normal 1th Score : "+ getFirstScore(getLevel()));
-            }else{
-                views.setTextViewText(R.id.widget_hard_score, "Hard 1th Score : "+ getFirstScore(getLevel()));
+                views.setTextViewText(R.id.widget_normal_score, "N 1th Score : "+ getFirstScore(getLevel()));
+            }else if(getLevel()=="hard"){
+                views.setTextViewText(R.id.widget_hard_score, "H 1th Score : "+ getFirstScore(getLevel()));
+            }else if(getLevel()=="dnd"){
+                views.setTextViewText(R.id.widget_dnd_first_score, "D 1th Score : "+ getFirstScore(getLevel()));
             }
             appWidgetManager.updateAppWidget(componentName, views);
         }

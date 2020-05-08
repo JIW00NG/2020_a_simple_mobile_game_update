@@ -87,6 +87,7 @@ public class DragAndDropActivity extends Activity {
                 else {                // 다음문제로 넘어갈때
                     Intent intent = new Intent(DragAndDropActivity.this, ButtonActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -96,6 +97,7 @@ public class DragAndDropActivity extends Activity {
                 RQHandler.setResetRQ(RQ);
                 Intent intent = new Intent(DragAndDropActivity.this, ButtonActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

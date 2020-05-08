@@ -17,6 +17,7 @@ public class ButtonActivity extends Activity {
         setMainBgm();
         startService(new Intent(ButtonActivity.this,MyService.class));
         startActivity(intent);
+        finish();
     }
 
     public void reset(View o) {

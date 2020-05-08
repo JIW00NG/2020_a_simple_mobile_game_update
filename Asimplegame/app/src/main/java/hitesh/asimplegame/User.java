@@ -41,7 +41,8 @@ public class User {
         databaseReference.child(name).child("hard_last").setValue(0);
         databaseReference.child(name).child("email").setValue(email);
         databaseReference.child(name).child("user_name").setValue(username);
-        databaseReference.child(name).child("dnd_score").setValue(0);
+        databaseReference.child(name).child("dnd_best").setValue(0);
+        databaseReference.child(name).child("dnd_last").setValue(0);
     }
 
 
