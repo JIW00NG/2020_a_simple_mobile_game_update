@@ -17,6 +17,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import static hitesh.asimplegame.MyService.setStartBgm;
+
 public class UserRecord extends Activity {
 
     private TextView titleEasyLastScore, titleNormalLastScore, titleHardLastScore;
